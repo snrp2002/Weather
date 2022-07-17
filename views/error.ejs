@@ -1,0 +1,20 @@
+<%- include('header') -%>
+    <div class="error">
+        
+        <p class="s1">
+            Unexpected error <%= error %> not found !! 
+        </p>
+        <p class="s1">
+            Please Try Again...
+        </p>
+
+
+
+        <img src="images\warning-unscreen.gif" height="200px">
+
+        
+        <form action="/not-found" method="post">
+            <button class="btn btn-outline-dark s3 my-4" type="submit">Back <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+        </form>
+    </div>
+<%- include('footer') -%>

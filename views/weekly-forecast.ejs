@@ -1,0 +1,107 @@
+    <%- include('header'); -%>
+
+        <!-- Page heading -->
+
+        <div class="row page-heading">
+            <p class="s2 mb-0">
+                Upcoming 10 Days Weather Forecast
+            </p>
+        </div>
+
+
+        <!-- Weather cards -->
+
+        <div class="row box-2">
+            <% for(let i=1; i<=10; i++){ %>
+                <% if(i%2 == 1){ %> 
+                    <div class="col-lg-6 pb-5 animated fadeInUp">   
+                        <div class="row per-day-left">
+
+                            <div class="col-5 per-day-data-1">
+                                <img class="mb-2 per-day-img" src="images/icon1/<%= days[i].icon %>-unscreen.gif"height="100px">
+                                <p class="s3 mb-1"><img src="images/up-arrow.png" height="30px"> <%= days[i].tempmax %> °C</p>
+                                <p class="s3"><%= days[i].tempmin %> °C <img src="images/down-arrow.png" height="30px"></p>
+                            </div>
+
+                            <div class="col-7 per-day-data-2">
+                                <div class="row">
+                                    <p class="s2 mb-1"><%= days[i].datetime %></p>
+                                </div>
+                                <div class="row">
+                                    <p class="mb-4"><%= days[i].description %></p>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="mb-1"><img src="images/sunrise.png" height="25px"class="me-2"> <%= days[i].sunrise %></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="mb-2"><%= days[i].sunset %> <img src="images/sunrise.png" height="25px"class="ms-2"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <i class="fa-solid fa-wind"></i> <%= days[i].windspeed %>km/s
+                                    </div>
+                                    <div class="col-6">
+                                        <i class="fa-solid fa-droplet"></i> <%= days[i].humidity %>%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }else{ %>
+                    <div class="col-lg-6 pb-5 animated fadeInUp">
+                        <div class="row per-day-right">
+
+                            <div class="col-5 per-day-data-1">
+                                <img class="mb-2 per-day-img" src="images/icon1/<%= days[i].icon %>-unscreen.gif"height="100px">
+                                <p class="s3 mb-1"><img src="images/up-arrow.png" height="30px"> <%= days[i].tempmax %> °C</p>
+                                <p class="s3"><%= days[i].tempmin %> °C <img src="images/down-arrow.png" height="30px"></p>
+                            </div>
+
+                            <div class="col-7 per-day-data-2">
+                                <div class="row">
+                                    <p class="s2 mb-1"><%= days[i].datetime %></p>
+                                </div>
+                                <div class="row">
+                                    <p class="mb-4"><%= days[i].description %></p>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="mb-1"><img src="images/sunrise.png" height="25px"class="me-2"> <%= days[i].sunrise %></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="mb-2"><%= days[i].sunset %> <img src="images/sunrise.png" height="25px"class="ms-2"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <i class="fa-solid fa-wind"></i> <%= days[i].windspeed %>km/s
+                                    </div>
+                                    <div class="col-6">
+                                        <i class="fa-solid fa-droplet"></i> <%= days[i].humidity %>%</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+        <!-- current weather -->
+
+        <div class="row animated fadeInUp">
+            <div class="current-button">
+              <form action="/current-weather" method="post">
+                <button type="submit">
+                  <p class="s2 mb-0">Current Weather</p>
+                </button>
+              </form>
+            </div>
+        </div>
+
+    <%- include('footer'); -%>

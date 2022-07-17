@@ -1,0 +1,116 @@
+    <%- include('header') -%>   
+
+    <!-- Current Weather -->
+    <div class="row">
+
+      <!-- Left Side column -->
+
+      <div class="col-lg-6 col-md-12 box">
+        <div class="current-1">
+
+          <!-- Search -->
+
+          <form action="/" method="post">
+            <input class="form-control" name="city" type="text" placeholder="Enter city name" required>
+            <button type="submit" id="search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+
+          <!-- Weather Data -->
+
+          <div class="current-1-data">
+            <p class="s2 mb-0"><i class="fa-solid fa-location-dot"></i> <%= city %></p>
+            <!-- <i class="fa-solid fa-cloud m0"></i> -->
+            <img src="images/icon1/<%= current.icon%>-unscreen.gif" height="120px">
+            <p class="s1"> <%= current.conditions %></p>
+            <p class="s0"><%= Math.round(current.temp) %> °C</p>
+            <p class="s3"><i class="fa-solid fa-temperature-empty"></i> Feels like: <%= current.feelslike %> °C</p>
+            <p class="s3"><i class="fa-solid fa-wind"></i> Wind Speed: <%= current.windspeed %> km/s</p>
+            <p class="s3"><i class="fa-solid fa-droplet"></i> Humidity: <%= current.humidity %> %</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right side column -->
+
+      <div class="col-lg-6 col-md-12 box">
+        <div class="current-2">
+
+          <!-- Temperature -->
+
+          <div class="row">
+
+            <div class="col-3 tempMax">
+              <div class="temp-text">
+                <p class="s2 mb-0"><i class="fa-solid fa-temperature-arrow-up"></i></p>
+                <p class="s2"><%= days[0].tempmax %> °C</p>
+              </div>
+            </div>
+            <div class="col-6 temp-middle">
+              <div class="temp-text">
+                <img src="images\umbrella-unscreen.gif" height="80px">
+                <p class="s3"><%= current.precipprob %>% CHANCE OF PRECIPITATION TODAY</p>
+              </div>
+            </div>
+            <div class="col-3 tempMin">
+              <div class="temp-text">
+                <p class="s2 mb-0"><i class="fa-solid fa-temperature-arrow-down"></i></p>
+                <p class="s2"><%= days[0].tempmin %> °C</p>
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- Sun -->
+
+          <div class="row sun">
+            <div class="col-6">
+              <p>
+                <img src="images/sunrise.png" height="25px" class="me-1">Sunrise : <%= current.sunrise.replaceAll(' ','') %>
+              </p>
+            </div>
+            <div class="col-6">
+              <p>
+                <img src="images/sunrise.png" height="25px" class="me-1">Sunset : <%= current.sunset.replaceAll(' ','') %>
+              </p>
+            </div>
+          </div>
+
+
+          <!-- Next Hours  -->
+          
+          <div class="row">
+            <div class="hours-data s3">
+              <div class="hour-text">
+                <p class="mb-0 s2">Next</p>
+                <p class="mb-0 s2">Hours</p>
+              </div>
+
+              <% for(let i=1; i<hours.length; i++){ %>
+              <div class="hour">
+                <p class="mb-0"><%= hours[i].temp %>°C</p>
+                <img src="images/icon2/<%= hours[i].icon %>-unscreen.gif" height="60px">
+                <p class="mb-0"><%= hours[i].time.toLowerCase() %></p>
+              </div>
+              <% } %>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Forecast -->
+    <div class="row animated fadeInUp">
+      <div class="future-button">
+        <form action="/weekly-forecast" method="post">
+          <button type="submit">
+            <p class="s2 mb-0">Weekly Forecast</p>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <%- include('footer') -%>
